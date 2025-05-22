@@ -1,11 +1,19 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Book, Plus, ArrowRight } from "lucide-react";
+import { Book, Plus, ArrowRight, LogIn } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index: React.FC = () => {
   const navigate = useNavigate();
+  const { user, isLoading } = useAuth();
+  
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (user && !isLoading) {
+      navigate('/dashboard');
+    }
+  }, [user, isLoading, navigate]);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -23,9 +31,9 @@ const Index: React.FC = () => {
           <Button 
             variant="outline" 
             className="hidden sm:flex"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('/auth')}
           >
-            Dashboard
+            <LogIn className="w-4 h-4 mr-2" /> Login
           </Button>
         </div>
       </header>
@@ -47,7 +55,7 @@ const Index: React.FC = () => {
                 <Button 
                   size="lg" 
                   className="bg-prompt-gradient hover:opacity-90 transition-opacity"
-                  onClick={() => navigate('/dashboard')}
+                  onClick={() => navigate('/auth')}
                 >
                   Get Started <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -55,9 +63,9 @@ const Index: React.FC = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  onClick={() => navigate('/create')}
+                  onClick={() => navigate('/auth')}
                 >
-                  <Plus className="mr-2 w-5 h-5" /> Create Prompt
+                  <LogIn className="mr-2 w-5 h-5" /> Sign Up
                 </Button>
               </div>
             </div>
