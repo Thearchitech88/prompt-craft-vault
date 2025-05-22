@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { BookOpen, Settings, Users, Plus } from "lucide-react";
+import { BookOpen, Settings, Plus } from "lucide-react";
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const categories = [
@@ -28,14 +28,6 @@ const Sidebar: React.FC = () => {
           >
             <BookOpen className="w-4 h-4" />
             My Prompts
-          </Button>
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start gap-2"
-            onClick={() => navigate('/teams')}
-          >
-            <Users className="w-4 h-4" />
-            Teams
           </Button>
           <Button 
             variant="ghost" 
