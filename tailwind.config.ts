@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for our app
+				"prompt-dark": "#13111C",
+				"prompt-purple": {
+					50: "#F5F3FF",
+					100: "#EDE9FE",
+					200: "#DDD6FE",
+					300: "#C4B5FD",
+					400: "#A78BFA",
+					500: "#8B5CF6",
+					600: "#7C3AED",
+					700: "#6D28D9",
+					800: "#5B21B6",
+					900: "#4C1D95",
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +99,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'pulse-light': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.8' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'pulse-light': 'pulse-light 2s ease-in-out infinite',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'prompt-gradient': 'linear-gradient(to right, #4F46E5, #7C3AED)',
 			}
 		}
 	},
