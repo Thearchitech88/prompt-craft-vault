@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import PromptTester from "@/components/PromptTester";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -159,9 +159,10 @@ const PromptDetail: React.FC = () => {
               </div>
             ) : (
               <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-                <TabsList className="grid w-full max-w-md grid-cols-2">
+                <TabsList className="grid w-full max-w-md grid-cols-3">
                   <TabsTrigger value="edit">Edit Prompt</TabsTrigger>
                   <TabsTrigger value="versions">Version History</TabsTrigger>
+                  <TabsTrigger value="test">Test Prompt</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="edit" className="space-y-6">
@@ -332,6 +333,10 @@ const PromptDetail: React.FC = () => {
                       </Card>
                     ))}
                   </div>
+                </TabsContent>
+                
+                <TabsContent value="test" className="space-y-6">
+                  <PromptTester promptContent={content} />
                 </TabsContent>
               </Tabs>
             )}

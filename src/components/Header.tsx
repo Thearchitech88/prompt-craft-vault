@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { Plus, Book } from "lucide-react";
+import { Plus, Book, Settings } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -14,7 +14,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-center w-10 h-10 rounded-md bg-prompt-gradient">
             <Book className="w-5 h-5 text-white" />
           </div>
-          <h1 className="text-xl font-bold">
+          <h1 className="text-xl font-bold cursor-pointer" onClick={() => navigate('/')}>
             Prompt<span className="gradient-text">Craft</span>Vault
           </h1>
         </div>
@@ -27,6 +27,14 @@ const Header: React.FC = () => {
             onClick={() => navigate('/dashboard')}
           >
             Dashboard
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden sm:flex"
+            onClick={() => navigate('/settings')}
+          >
+            <Settings className="w-4 h-4 mr-1" /> Settings
           </Button>
           <Button
             size="sm"
